@@ -1,0 +1,22 @@
+# Ignore the large file you will download from Google Drive
+similarity.pkl
+
+# Ignore Python cache and compiled files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Ignore virtual environments
+.venv/
+env/
+venv/
+
+# Ignore IDE/editor settings
+.idea/
+.vscode/
+*.log
+
+# Ignore macOS and Linux system files
+.DS_Store
+Thumbs.db
