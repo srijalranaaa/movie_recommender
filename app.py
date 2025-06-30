@@ -5,6 +5,37 @@ import requests
 import gdown
 import os
 
+# --- TOP HEADER BAR ---
+st.markdown("""
+    <style>
+    .main-header {
+        background-color: #390000;
+        color: white;
+        padding: 10px 25px;
+        text-align: left;
+        font-size: 24px;
+        font-weight: bold;
+        font-style: italic;
+        font-family:  "Poppins", sans-serif;
+        border-bottom: 2px solid #ffffff44;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        z-index: 9999;
+    }
+    .spacer-header {
+        height: 55px;
+    }
+    </style>
+
+    <div class="main-header">
+        Smartflix - Movie Recommender System
+    </div>
+    <div class="spacer-header"></div>
+""", unsafe_allow_html=True)
+
+
 # Download similarity.pkl if not present
 if not os.path.exists("similarity.pkl"):
     file_id = "1kATd81XtpqREWsxvt3pCdzALhDXjVVjq"
@@ -15,6 +46,9 @@ if not os.path.exists("similarity.pkl"):
 # SET SESSION STATE
 if "start_done" not in st.session_state:
     st.session_state.start_done = False
+
+
+
 
 
 #  SELECT BACKGROUND IMAGE BASED ON PAGE
@@ -66,6 +100,9 @@ st.markdown(f"""
 """, unsafe_allow_html=True)
 
 
+
+
+
 #  START PAGE
 if not st.session_state.start_done:
     st.markdown("""
@@ -88,6 +125,8 @@ if not st.session_state.start_done:
                 time.sleep(1.7)  # ⏳ Gives a smoother feel
             st.session_state.start_done = True
             st.rerun()
+
+
 
 
 
@@ -134,18 +173,57 @@ else:
     if st.button('Recommend'):
         names, posters = recommend(selected_movie_name)
 
-        for row in range(2):  # 2 rows
-            cols = st.columns(5)
+        with st.container():
+            cols1 = st.columns(5)
             for i in range(5):
-                idx = row * 5 + i
-                with cols[i]:
+                with cols1[i]:
                     st.markdown(f"""
-                        <div style="padding: 5px; text-align: center; font-style: italic;">
-                            <img src="{posters[idx]}" style="width:100%; height:200px;
+                        <div style="padding: 2px; text-align: center; font-style: italic;">
+                            <img src="{posters[i]}" style="width:100%; height:200px;
                                 border: 2px solid #FFFFFF;
                                 box-shadow: 0 0 4px #390000, 0 0 8px #390000, 0 0 12px #390000;
-                                border-radius: 10px;" />
-                            <h4 style="color:white; margin-top:10px;">{names[idx]}</h4>
+                                border-radius: 10px;
+                                margin-bottom: 4px;" />
+                            <h4 style="color:white; margin-top:4px; margin-bottom: 0;">{names[i]}</h4>
+                        </div>
+                    """, unsafe_allow_html=True)
+
+            cols2 = st.columns(5)
+            for i in range(5, 10):
+                with cols2[i - 5]:
+                    st.markdown(f"""
+                        <div style="padding: 2px; text-align: center; font-style: italic;">
+                            <img src="{posters[i]}" style="width:100%; height:200px;
+                                border: 2px solid #FFFFFF;
+                                box-shadow: 0 0 4px #390000, 0 0 8px #390000, 0 0 12px #390000;
+                                border-radius: 10px;
+                                margin-bottom: 4px;" />
+                            <h4 style="color:white; margin-top:4px; margin-bottom: 0;">{names[i]}</h4>
+                        </div>
+                    """, unsafe_allow_html=True)
+
+                    st.markdown("""
+                        <style>
+                        .footer-container {
+                            background-color: #390000;
+                            color: white;
+                            padding: 12px 30px;
+                            font-size: 14px;
+                            font-family: 'Segoe UI', sans-serif;
+                            text-align: center;
+                            position: fixed;
+                            bottom: 0;
+                            left: 0;
+                            right: 0;
+                            width: 100vw;
+                            z-index: 9999;
+                            box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.5);
+                            border-top: 1px solid #ffffff33;
+                        }
+                        </style>
+
+                        <div class="footer-container">
+                            🎬 That’s a wrap! Smartflix just picked your next binge | Enjoy Smartflix 🎬 | © 2025 by <b>Srijal a</b>
                         </div>
                     """, unsafe_allow_html=True)
 
