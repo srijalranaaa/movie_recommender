@@ -46,7 +46,9 @@ st.markdown(f"""
         color: white;
         background-color: transparent;
     }}
-    button {{
+
+    /* ✅ FIXED: Only style your st.button buttons */
+    div.stButton > button {{
         background-color: #390000 !important;
         color: white !important;
         font-weight: bold !important;
@@ -55,8 +57,9 @@ st.markdown(f"""
         height: 3em !important;
         box-shadow: 1px 1px 4px #FFFFFF !important;
         font-size: 18px !important;
+        transition: all 0.3s ease;
     }}
-    button:hover {{
+    div.stButton > button:hover {{
         background-color: #CD5C5C !important;
     }}
     </style>
@@ -145,6 +148,8 @@ else:
                             <h4 style="color:white; margin-top:10px;">{names[idx]}</h4>
                         </div>
                     """, unsafe_allow_html=True)
+
+
 
 
 
