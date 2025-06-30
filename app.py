@@ -72,7 +72,7 @@ if not st.session_state.start_done:
         <h1 style='text-align: center; font-style: italic; font-family: "Trebuchet MS", "Segoe UI", sans-serif; color: white; font-weight: bold;
         text-shadow: -2px -2px 0 #390000, 2px -2px 0 #390000, -2px 2px 0 #390000, 2px 2px 0 #390000,
         -3px 0 0 #390000, 3px 0 0 #390000, 0 3px 0 #390000, 0 -3px 0 #390000,
-        0 0 10px #390000, 0 0 20px #390000;'>Welcome to Smartflix Movie Recommendations 🎬</h1>
+        0 0 10px #390000, 0 0 20px #390000;'>Welcome to Smartflix Movie Recommendation </h1>
         <p style='text-align: center; font-size: 20px; color: white; font-style: italic;'>
             Click the <b>Start</b> button to explore movie recommendations tailored just for you!
         </p>
