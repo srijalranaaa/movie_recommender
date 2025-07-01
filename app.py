@@ -223,7 +223,7 @@ else:
                         </style>
 
                         <div class="footer-container">
-                            🎬 That’s a wrap! Smartflix just picked your next binge | Enjoy Smartflix 🎬 | © 2025 by <b>Srijal </b>
+                            🎬 That’s a wrap! Smartflix just picked your next binge | Enjoy Smartflix 🎬 | © 2025 Smartflix Movie Recommendation.All Write reserved
                         </div>
                     """, unsafe_allow_html=True)
 
