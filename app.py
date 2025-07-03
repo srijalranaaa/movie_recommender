@@ -125,7 +125,7 @@ if not st.session_state.start_done:
             <h2 style='color:#FFD700; text-align: center; font-family: "Trebuchet MS", sans-serif;'>📽️ About Smartflix</h2>
             <p style='color:white; font-size: 16px; text-align: justify; font-family: "Segoe UI", sans-serif;'>
                 <b>Smartflix</b> is your intelligent movie companion, crafted to help you discover films you'll love through tailored recommendations and a seamless browsing experience.
-                Whether you're into action, drama, or thrillers, Smartflix helps you explore similar movies that match your taste — making movie selection easier, faster, and more enjoyable.
+                Whether you're into action, drama, or thrillers, Smartflix helps you explore similar movies that match your taste making movie selection easier, faster, and more enjoyable.
             </p>
             <p style='color:white; font-size: 15px; text-align: center; font-style: italic;'>
                 Crafted with ❤️ by <b>Srijal </b> | 2025
