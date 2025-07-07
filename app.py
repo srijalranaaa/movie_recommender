@@ -1,3 +1,4 @@
+
 import streamlit as st
 import pickle
 import pandas as pd
@@ -106,7 +107,7 @@ def fetch_movie_info(title):
 def recommend(movie):
     idx = movies[movies['title'] == movie].index[0]
     distances = similarity[idx]
-    movie_indices = sorted(list(enumerate(distances)), key=lambda x: x[1], reverse=True)[1:25]  # get top 24 to filter later
+    movie_indices = sorted(list(enumerate(distances)), key=lambda x: x[1], reverse=True)[1:25]
     return [movies.iloc[i[0]].title for i in movie_indices]
 
 # --- START PAGE ---
@@ -126,7 +127,7 @@ if not st.session_state.start_done:
             <h2 style='color:#FFD700; text-align: center; font-family: "Trebuchet MS", sans-serif;'>📽️ About Smartflix</h2>
             <p style='color:white; font-size: 16px; text-align: justify; font-family: "Segoe UI", sans-serif;'>
                 <b>Smartflix</b> is your intelligent movie companion, crafted to help you discover films you'll love through tailored recommendations and a seamless browsing experience.
-                Whether you're into action, drama, or thrillers, Smartflix helps you explore similar movies that match your taste making movie selection easier, faster, and more enjoyable.
+                Whether you're into action, drama, or thrillers, Smartflix helps you explore similar movies that match your taste — making movie selection easier, faster, and more enjoyable.
             </p>
             <p style='color:white; font-size: 15px; text-align: center; font-style: italic;'>
                 Crafted with ❤️ by <b>Srijal Rana</b> | 2025
@@ -184,7 +185,6 @@ else:
             </p>
         """, unsafe_allow_html=True)
 
-        # Filter only movies with valid posters (max 10)
         valid_movies = []
         for title in st.session_state.recommended_movies:
             if len(valid_movies) >= 10:
@@ -198,7 +198,9 @@ else:
             for i, (title, poster) in enumerate(valid_movies[row:row + 5]):
                 with cols[i]:
                     st.image(poster, use_container_width=True)
-                    if st.button(title, key=title):
+                    # ✅ Use unique key per button
+                    unique_key = f"{title}_{row}_{i}"
+                    if st.button(title, key=unique_key):
                         st.session_state.selected_movie = title
                         st.rerun()
 
