@@ -109,7 +109,7 @@ def recommend(movie):
     distances = similarity[idx]
     movie_indices = sorted(list(enumerate(distances)), key=lambda x: x[1], reverse=True)[1:25]
     return [movies.iloc[i[0]].title for i in movie_indices]
-<<<<<<< HEAD
+
 
 # --- START PAGE ---
 if not st.session_state.start_done:
