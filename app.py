@@ -163,7 +163,7 @@ elif st.session_state.selected_movie:
             st.image(data["Poster"], use_container_width=True)
         else:
             st.warning("Poster not available.")
-=======
+
 
 # --- START PAGE ---
 if not st.session_state.start_done:
