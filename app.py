@@ -1,4 +1,3 @@
-
 import streamlit as st
 import pickle
 import pandas as pd
@@ -110,7 +109,6 @@ def recommend(movie):
     movie_indices = sorted(list(enumerate(distances)), key=lambda x: x[1], reverse=True)[1:25]
     return [movies.iloc[i[0]].title for i in movie_indices]
 
-
 # --- START PAGE ---
 if not st.session_state.start_done:
     st.markdown("""
@@ -132,60 +130,6 @@ if not st.session_state.start_done:
             </p>
             <p style='color:white; font-size: 15px; text-align: center; font-style: italic;'>
                 Crafted with ❤️ by <b>Srijal Rana</b> | 2025
-            </p>
-        </div>
-    """, unsafe_allow_html=True)
-
-    with col2:
-        if st.button("Start", use_container_width=True):
-            import time
-            with st.spinner("Loading Smartflix..."):
-                time.sleep(1.5)
-            st.session_state.start_done = True
-            st.rerun()
-
-# --- MOVIE DETAIL PAGE ---
-elif st.session_state.selected_movie:
-    data = fetch_movie_info(st.session_state.selected_movie)
-    st.markdown(f"<h2 style='color:white; font-style:italic;'>🎬 {data['Title']}</h2>", unsafe_allow_html=True)
-    col1, col2 = st.columns([2, 1])
-    with col1:
-        st.markdown(f"**📝 Plot:** {data['Plot']}")
-        st.markdown(f"**🗂️ Genre:** {data['Genre']}")
-        st.markdown(f"**⭐ IMDb Rating:** {data['imdbRating']}")
-        st.markdown(f"**📅 Year:** {data['Year']}")
-        st.markdown(f"**⏱️ Runtime:** {data['Runtime']}")
-        if st.button("🔙 Back to Smartflix"):
-            st.session_state.selected_movie = None
-            st.rerun()
-    with col2:
-        if data["Poster"] and data["Poster"] != "N/A":
-            st.image(data["Poster"], use_container_width=True)
-        else:
-            st.warning("Poster not available.")
-
-
-# --- START PAGE ---
-if not st.session_state.start_done:
-    st.markdown("""
-        <h1 style='text-align: center; font-style: italic; font-family: "Trebuchet MS", sans-serif; color: white; font-weight: bold;
-        text-shadow: -2px -2px 0 #390000, 2px -2px 0 #390000, -2px 2px 0 #390000, 2px 2px 0 #390000;'>Welcome to Smartflix Movie Recommendation</h1>
-        <p style='text-align: center; font-size: 20px; color: white; font-style: italic;'>
-            Click <b>Start</b> to explore personalized movie recommendations!
-        </p>
-    """, unsafe_allow_html=True)
-
-    col1, col2, col3 = st.columns([1, 2, 1])
-    st.markdown("""
-        <hr style='border: 1px solid #ffffff33; margin-top: 40px; margin-bottom: 20px;'>
-        <div style="background-color: rgba(57, 0, 0, 0.5); padding: 20px; border-radius: 15px; max-width: 850px; margin: auto; box-shadow: 0 0 8px #ffffff33;">
-            <h2 style='color:#FFD700; text-align: center; font-family: "Trebuchet MS", sans-serif;'>📽️ About Smartflix</h2>
-            <p style='color:white; font-size: 16px; text-align: justify; font-family: "Segoe UI", sans-serif;'>
-                <b>Smartflix</b> is your intelligent movie companion, crafted to help you discover films you'll love through tailored recommendations and a seamless browsing experience.
-                Whether you're into action, drama, or thrillers, Smartflix helps you explore similar movies that match your taste making movie selection easier, faster, and more enjoyable.
-            </p>
-            <p style='color:white; font-size: 15px; text-align: center; font-style: italic;'>
-                Crafted with ❤️ by <b>Srijal </b> | 2025
             </p>
         </div>
     """, unsafe_allow_html=True)
@@ -253,9 +197,7 @@ else:
             for i, (title, poster) in enumerate(valid_movies[row:row + 5]):
                 with cols[i]:
                     st.image(poster, use_container_width=True)
-                    # ✅ Use unique key per button
-                    unique_key = f"{title}_{row}_{i}"
-                    if st.button(title, key=unique_key):
+                    if st.button(title, key=f"{title}_{row}_{i}"):
                         st.session_state.selected_movie = title
                         st.rerun()
 
@@ -289,11 +231,3 @@ if st.session_state.recommended_movies and st.session_state.start_done:
             🎬 That’s a wrap! Smartflix just picked your next binge | Enjoy Smartflix 🎬 | ©2025 Smartflix Movie Recommendation
         </div>
     """, unsafe_allow_html=True)
-
-
-
-
-
-
-
-
